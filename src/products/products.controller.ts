@@ -67,12 +67,6 @@ export class ProductsController {
   ): Promise<ApiResponse<Product> | ApiErrorResponse> {
     try {
       const product = await this.productsService.getOne(id);
-      if (!product) {
-        throw new HttpException(
-          { success: false, error: 'Product not found' },
-          HttpStatus.NOT_FOUND,
-        );
-      }
       return {
         success: true,
         data: product,
